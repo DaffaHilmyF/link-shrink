@@ -1,6 +1,5 @@
 // Load library
 const express = require('express');
-const createShortURL = require('./function/url-create.js')
 const {showAllLinkInDB, showSpecificShortLink} = require('./function/url-search.js')
 
 const route = express();
