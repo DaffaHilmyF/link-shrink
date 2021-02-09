@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .title {
+      text-align: center;
+      padding: 10px;
+    }
+    .inputContainer{
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      width: 70%;
+      padding: 10px;
+    }
+    .box {
+      width: 100%;
+      display: block;
+      height: 35px;
+      padding: 10px 16px;
+    }
+    .boxSatu{
+      display: flex;
+
+    }
+    form{
+      width: 100%;
+    }
+    body{
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+    .submit{
+      width: 100%;
+      display: block;
+      height: 59px;
+      padding: 10px 16px;
+    }
+    #link.hide{
+      display: none;
+
+    }
+  </style>
+</head>
+<body>
+  
+
+<header>
+  <h1 class="title">Bebas</h1>
+</header>
+
+<section class="inputContainer">
+  <h1 class="title">Paste the URL to be shortened</h1>
+  <form action="javascript:void(0)" onsubmit="submitInput()" method="POST"> 
+    <div class="boxSatu" >
+      <input type="text" class="box">
+      <div>
+        <input id="submit" class="submit" type="submit">
+      </div>
+    </div>
+  </form>
+  <p class="title">ShortURL.at is a free tool to shorten a URL or reduce a link
+    <br>Use our URL Shortener to create a shortened link making it easy to remember
+  </p>
+
+  <a href="" id="link" target="_blank" class="hide"></a>
+</section>
+
+
+<script> 
+
+async function submitInput(){
+  const data = document.getElementsByClassName("box")[0].value
+  const body = "longUrl=" + data
+
+  const result = await fetch("http://localhost:3000/", {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+                  },
+                  body: body
+                })
+  const hasil = await result.json()
+  const a = document.getElementById('link')
+  const url = 'http://localhost:3000/' + hasil.data.shortUrl
+  a.setAttribute('href', url)
+  a.innerHTML = url
+  a.classList.remove('hide')
+  // getInput()
+}
+
+// async function getInput(){
+//   const result = await fetch("http://localhost:3000/", {
+//                   method: 'GET',
+//                   headers: {
+//                     'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+//                   },
+//                 })
+//   const hasil = await result.json();
+//   console.log(hasil)
+// }
+
+
+</script>
+
+
+
+</body>
+</html>
