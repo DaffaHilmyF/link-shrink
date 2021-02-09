@@ -32,7 +32,7 @@ function IsURLValid(url){
        return false;
    }
 
-   if(IsInputHasWhiteSpace && IsInputHasNoValue == false ){
+   if(IsInputHasWhiteSpace && IsInputHasNoValue != true ){
         return true;
    }else{
         return false;

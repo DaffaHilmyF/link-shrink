@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 const db = require('./config/db.js').mongoURI;
 const cors = require('cors')
 
-
+const IsShortURLInDB = require('./routes/function/url-search.js')
 
 
 // IS: Auth mongoURI to mongoDB server
@@ -28,7 +28,7 @@ app.use(cors())
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.use('/', require('./routes/url-api.js'))
+app.use('/', require('./routes/url-post.js'))
 // app.use('/', require('./routes/sign-up.js'))
 
 
