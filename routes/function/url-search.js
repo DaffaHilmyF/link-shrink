@@ -26,6 +26,22 @@ async function IsShortURLInDB(shortUrl){
    
 }
 
+function showAllLinkInDB(res){
+    db.find({}).then((url)=>{
+        return res.status(200).json({data: url})
+    })
+}
+
+function showSpecificShortLink(shortURL, res){
+    db.findOne({shortUrl: shortURL}).then((url)=>{
+        return res.status(200).json({data: url}) 
+    })
+}
 
 
-module.exports = IsShortURLInDB;
+
+module.exports = {
+    IsShortURLInDB,
+    showAllLinkInDB,
+    showSpecificShortLink,
+};
