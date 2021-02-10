@@ -18,23 +18,26 @@ function IsInputHasNull(url){
 
 
 function IsInputHasNoValue(url){
-    if(url === '' || url === []){
+    if(!url){
         return true;
     }else if(url){
         return false;
     }
 }
 
+function IsInputHasSpecialChar(url){
+    const specialChar = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    if (specialChar.test(url)) {
+        return true;
+    }else{
+        return false;
+    }
+}
 
-function IsURLValid(url){
-
-
-    console.log(IsInputHasNull(url), IsInputHasWhiteSpace(url), IsInputHasNoValue(url))
-
+function IsURLValid(url){    
    if(IsInputHasNull(url) == true){
        return false;
    }
-
    if(IsInputHasWhiteSpace(url) == false && IsInputHasNoValue(url) == false ){
         return true;
    }else{
@@ -46,5 +49,6 @@ module.exports = {
     IsURLValid,
     IsInputHasNoValue,
     IsInputHasNull,
-    IsInputHasWhiteSpace
+    IsInputHasWhiteSpace, 
+    IsInputHasSpecialChar
 }

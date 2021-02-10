@@ -7,7 +7,9 @@ const route = express();
 
 route.post('/create', (req, res)=>{
     const { longUrl } = req.body;
-    if(IsURLValid(longUrl) != true){
+
+
+    if(IsURLValid(longUrl) != false){
         return res.sendStatus(400);
     }else{
         return createShortURL(longUrl, res);

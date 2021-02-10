@@ -15,7 +15,9 @@ function createShortURL(longURL, res){
 
 function ChangeShortURLName(shortURL, newShortLink, res){
     try {
-        db.findOneAndUpdate({shortUrl: shortURL}, {shortUrl: newShortLink}).then(()=>res.status(200).json({ message: 'success' }))
+        db.findOneAndUpdate({shortUrl: shortURL}, {shortUrl: newShortLink}).then(function () {
+                res.status(200).json({ message: 'success' });
+            });
     } catch (error) {
         console.error(error)
     }
