@@ -9,7 +9,7 @@ function IsInputHasWhiteSpace(url){
 
 
 function IsInputHasNull(url){
-    if(url == null){
+    if(url == null || url.lenght === 0){
         return true;
     }else{
         return false;
@@ -18,7 +18,7 @@ function IsInputHasNull(url){
 
 
 function IsInputHasNoValue(url){
-    if(!url){
+    if(url === '' || url === []){
         return true;
     }else if(url){
         return false;
@@ -28,11 +28,14 @@ function IsInputHasNoValue(url){
 
 function IsURLValid(url){
 
+
+    console.log(IsInputHasNull(url), IsInputHasWhiteSpace(url), IsInputHasNoValue(url))
+
    if(IsInputHasNull(url) == true){
        return false;
    }
 
-   if(IsInputHasWhiteSpace && IsInputHasNoValue != true ){
+   if(IsInputHasWhiteSpace(url) == false && IsInputHasNoValue(url) == false ){
         return true;
    }else{
         return false;

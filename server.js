@@ -24,9 +24,10 @@ app.use(cors())
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.use('/', require('./routes/url-post.js'))
-app.use('/', require('./routes/url-get.js'))
-
+app.use('/', require('./routes/api-post.js'))
+app.use('/', require('./routes/api-get.js'))
+app.use('/', require('./routes/api-put.js'))
+app.use('/', require('./routes/api-delete.js'))
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, ()=>{
