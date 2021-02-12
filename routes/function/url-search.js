@@ -38,10 +38,25 @@ function showSpecificShortLink(shortURL, res){
     })
 }
 
+function getTheLinkData(shortURL, res){
+    db.findOne({shortUrl: shortURL}).then((result) =>{
+        return res.redirect(result.longUrl)
+    })
+ 
+}
+
+async function redirectToLink(shortUrl, res){
+    // if (await IsShortURLInDB(shortUrl) != true ){
+    //     return res.sendStatus(404)
+    // }
+    getTheLinkData(shortUrl, res)
+    
+}
 
 
 module.exports = {
     IsShortURLInDB,
     showAllLinkInDB,
     showSpecificShortLink,
+    redirectToLink,
 };

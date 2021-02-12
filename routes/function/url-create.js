@@ -6,7 +6,7 @@ function createShortURL(longURL, res){
     try {
         const shortURL = URLShrink();
         db.create({longUrl: longURL, shortUrl: shortURL}).then(()=>{
-            return res.status(200).json({message: "Success"})
+            return res.status(200).json({message: "Success", data: shortURL})
         })
     } catch (error) {
         console.error(error)

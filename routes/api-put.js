@@ -10,8 +10,7 @@ route.put('/change/:shortLink', async (req, res)=>{
     try {
         const {shortLink} = req.params
         const {newShortLink} = req.body;
-
-
+        
         if(IsShortURLInDB(shortLink) == false){
             return res.sendStatus(404);
         }
